@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+<head>
+    <meta charset = "UTF-8">
+    <title>HW3: Lunar Lander</title>
+
+    <link rel="stylesheet" href="styles/game.css">
+</head>
+<body onload = "MyGame.game.initialize();">
+    <div id = "game">
+        <div id = "main-menu" class = "screen">
+            <ul class = "menu">
+                <li><button id = "id-new-game">New Game</button></li>
+                <li><button id = "id-high-scores">High Scores</button></li>
+                <li><button id = "id-controls">Controls</button></li>
+                <li><button id = "id-about">About</button></li>
+            </ul>
+        </div>
+        <div id = "game-play" class = "screen">
+            <canvas id = "id-canvas"></canvas>
+        </div>
+        <div id = "high-scores" class = "screen">
+            <h1>High Scores</h1>
+            <ol id="scores"></ol>
+            <ul class = "menu">
+                <li><button id = "id-high-scores-back">Back</button></li>
+            </ul>
+            <h1>Best Times</h1>
+            <ol id="times"></ol>
+            <ul class = "menu">
+                <li><button id = "id-high-scores-back">Back</button></li>
+            </ul>
+
+        </div>
+        <div id = "controls" class = "screen">
+            <h1>Controls</h1>
+            <p>To change the controls, click on the control you wish to change and then press the button you would like it mapped to</p>
+            
+            
+            <ul class = "menu">
+                <li><button id = "thrust-control">Thrust</button></li>
+                <li><button id = "right-control">Right</button></li>
+                <li><button id = "left-control">Left</button></li>
+                <li><button id = "esc-control">Escape</button></li>
+                <li><button id = "id-controls-back">Back</button></li>
+            </ul>
+        </div>
+        <div id = "about" class = "screen">
+            <h1>About</h1>
+            <p>Developed by</p>
+            <p>Griffin Hackley</p>
+            <ul class = "menu">
+                <li><button id = "id-about-back">Back</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let MyGame = {
+            screens : {},
+            input: {},
+            objects: {},
+            systems:{},
+            render: [],
+        };
+    </script>
+    <script src = "scripts/game.js"></script>
+    <script src = "scripts/mainmenu.js"></script>
+    <script src = "scripts/gameplay.js"></script>
+    <script src = "scripts/highscores.js"></script>
+    <script src = "scripts/controls.js"></script>
+    <script src = "scripts/about.js"></script>
+
+    <script src = "scripts/random.js"></script>
+    <script src = "scripts/systems/particle-system.js"></script>
+    <script src = "scripts/render/core.js"></script>
+    <script src = "scripts/render/particle-system.js"></script>
+
+</body>
+
+</html>
