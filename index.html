@@ -25,25 +25,36 @@
             <ul class = "menu">
                 <li><button id = "id-high-scores-back">Back</button></li>
             </ul>
-            <h1>Best Times</h1>
-            <ol id="times"></ol>
-            <ul class = "menu">
-                <li><button id = "id-high-scores-back">Back</button></li>
-            </ul>
-
         </div>
         <div id = "controls" class = "screen">
             <h1>Controls</h1>
             <p>To change the controls, click on the control you wish to change and then press the button you would like it mapped to</p>
             
-            
-            <ul class = "menu">
-                <li><button id = "thrust-control">Thrust</button></li>
-                <li><button id = "right-control">Right</button></li>
-                <li><button id = "left-control">Left</button></li>
-                <li><button id = "esc-control">Escape</button></li>
-                <li><button id = "id-controls-back">Back</button></li>
-            </ul>
+            <div class="flex-container">
+                <div class= "flex-child">
+                    <ul class = "menu">
+                        <li><button id = "hard-control">Hard Down</button></li>
+                        <li><button id = "down-control">Soft Down</button></li>
+                        <li><button id = "right-control">Right</button></li>
+                        <li><button id = "left-control">Left</button></li>
+                        <li><button id = "clock-control">Clockwise</button></li>
+                        <li><button id = "counter-control">Counter Clockwise</button></li>
+                        <li><button id = "esc-control">Escape</button></li>
+                        <li><button id = "id-controls-back">Back</button></li>
+                    </ul>
+                </div>
+                <div class = "flex-child">
+                    <ul id = "controls" class="control-display">
+                        <li id = "hardControl"></li>
+                        <li id = "downControl"></li>
+                        <li id = "rightControl"></li>
+                        <li id = "leftControl"></li>
+                        <li id = "clockControl"></li>
+                        <li id = "counterControl"></li>
+                        <li id = "escapeControl"></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div id = "about" class = "screen">
             <h1>About</h1>
@@ -64,6 +75,11 @@
             render: [],
         };
     </script>
+    <script src = "scripts/random.js"></script>
+    <script src = "scripts/systems/particle-system.js"></script>
+    <script src = "scripts/render/core.js"></script>
+    <script src = "scripts/render/particle-system.js"></script>
+
     <script src = "scripts/render/core.js"></script>
     <script src = "scripts/input-keyboard.js"></script>
     <script src = "scripts/input-mouse.js"></script>
@@ -73,12 +89,6 @@
     <script src = "scripts/highscores.js"></script>
     <script src = "scripts/controls.js"></script>
     <script src = "scripts/about.js"></script>
-
-    <script src = "scripts/random.js"></script>
-    <script src = "scripts/systems/particle-system.js"></script>
-    <script src = "scripts/render/core.js"></script>
-    <script src = "scripts/render/particle-system.js"></script>
-
 </body>
 
 </html>

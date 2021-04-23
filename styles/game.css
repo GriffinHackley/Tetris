@@ -43,6 +43,19 @@ body {
     font-size: 0.75em;
 }
 
+.flex-container{
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}  
+
+#controls li {
+    margin-bottom: 45px;
+    list-style-type: none;
+}
+
 ul.menu {
     text-align: center;
     padding: 0;

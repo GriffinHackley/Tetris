@@ -5,8 +5,22 @@
 //
 // ------------------------------------------------------------------
 
-MyGame.game = (function(screens) {
+MyGame.game = (function(screens, systems, renderer, graphics) {
     'use strict';
+
+    console.log(MyGame.systems)
+
+    let lastTimeStamp = performance.now();
+    //
+    // Define a sample particle system to demonstrate its capabilities
+    let particlesFire = systems.ParticleSystem({
+            center: { x: 300, y: 300 },
+            size: { mean: 10, stdev: 4 },
+            speed: { mean: 50, stdev: 25 },
+            lifetime: { mean: 4, stdev: 1 }
+        },
+        graphics);
+    let renderFire = renderer.ParticleSystem(particlesFire, graphics, 'assets/fire.png');
     
     //------------------------------------------------------------------
     //
@@ -46,10 +60,26 @@ MyGame.game = (function(screens) {
         //
         // Make the main-menu screen the active one
         showScreen('main-menu');
+        
     }
+
+    function initializeControls(){
+        if(window.localStorage) {
+            var controls = window.localStorage.getItem('controls')
+            if(controls != null && controls.length < 7){
+                window.localStorage.setItem('controls', JSON.stringify({"keys":{},"handlers":[{"key":"ArrowUp","name":"hard"},{"key":"ArrowDown","name":"down"},{"key":"ArrowLeft","name":"left"},{"key":"ArrowRight","name":"right"},{"key":"Home","name":"counter"},{"key":"PageUp","name":"clock"},{"key":"Escape","name":"escape"}]}))
+                controls = JSON.parse(localStorage.getItem('controls'))
+                console.log(window.localStorage.getItem('controls'))
+            }
+        }
+        
+        return controls;
+    }
+
     
     return {
         initialize : initialize,
-        showScreen : showScreen
+        showScreen : showScreen,
+        controls:initializeControls
     };
-}(MyGame.screens));
+}(MyGame.screens, MyGame.systems, MyGame.render, MyGame.graphics));
