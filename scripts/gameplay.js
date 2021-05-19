@@ -745,15 +745,13 @@ MyGame.screens['game-play'] = (function(game, renderer, graphics, input, systems
     }
 
     function initializeControls(){
-        myKeyboard.register("g", attractMode, "attract");
-        let handlers = JSON.parse(localStorage.getItem('controls'))
-        
-        if(handlers == null){
-            handlers = MyGame.game.controls();
-            console.log(handlers)
-        } else {
-            handlers = handlers.handlers
+        if(localStorage.getItem('controls') == "" || localStorage.getItem('controls') == null){
+            console.log("No controls detected, initializing")
+            window.localStorage.setItem('controls', JSON.stringify({"keys":{},"handlers":[{"key":"ArrowUp","name":"hard"},{"key":"ArrowDown","name":"down"},{"key":"ArrowLeft","name":"left"},{"key":"ArrowRight","name":"right"},{"key":"Home","name":"counter"},{"key":"PageUp","name":"clock"},{"key":"Escape","name":"escape"}]}))
         }
+
+        let handlers = JSON.parse(localStorage.getItem('controls'))
+        handlers = handlers.handlers
         myKeyboard.register(handlers[0].key, currentPiece.hardDown, "hard");
         myKeyboard.register(handlers[1].key, currentPiece.moveDown, "down");
         myKeyboard.register(handlers[2].key, currentPiece.moveLeft, "left");
@@ -767,7 +765,16 @@ MyGame.screens['game-play'] = (function(game, renderer, graphics, input, systems
             game.showScreen('main-menu');
             music.pause();
         }, "escape");
+
+        console.log(handlers)
     }
+
+    function clearStorage(){
+        localStorage.clear()
+        console.log(localStorage.getItem('controls'))
+    }
+
+
 
     function newGame(){
         scaleCanvas();
