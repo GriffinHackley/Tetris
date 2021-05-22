@@ -1,1 +1,0 @@
-I did not implement the attract mode or node.js server. Just so you know and dont waste time looking for them
